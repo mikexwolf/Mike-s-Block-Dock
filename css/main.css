@@ -60,8 +60,14 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+.block.ui-draggable-dragging { background: #008055  ; box-shadow:  0px 7px 10px 2px black;}
+
 body {
-    background-color: #cce2e0;
+    padding-top: 80px;
+    background-color: teal;
+    /*background-image: url("..//img/time-machine.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;*/
     font-size:1.0em;
     overflow:hidden;
 }
@@ -80,8 +86,10 @@ img {
 }
 
 .block {
+    margin-left: 4px;
+    border: #330000 solid 2px;
     margin-top: 50px;
-    background-color: red;
+    background-color: #cc0000;
     width: 100px;
     height: 100px;
     cursor: move;
@@ -91,6 +99,7 @@ img {
     color: white;
     padding-top: auto;
     padding-bottom: auto;
+    border-radius: 50px;
 }
 
 h1 {
@@ -100,8 +109,10 @@ h1 {
     margin-right: auto;
 }
 .box {
+    margin-left: 4px;
+    border: #663300 solid 2px;
     margin-top: 50px;
-    background-color: orange;
+    background-color: #ff8000;
     width: 100px;
     height: 100px;
     display: inline-block;
