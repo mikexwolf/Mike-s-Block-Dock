@@ -1,39 +1,60 @@
 
-var time = 90;
+var time = 60;
 var tick = function() {
 	time--;
 	$('.counter').text(time);
 	if (time == 0) {
 		clearInterval(counter);
-		alert("Game Over");
-		 $(".block").off('.draggable');
+		$("#timer").empty();
+		$("h1").empty();
+		$("#blocks").empty();
+		$("#boxes").empty();
+		$(".block").empty();
+		$(".box").empty();
+		$(".block").off('.draggable');
+		$(".timer").html();
+		$(".play").hide();
+		$(".end").fadeIn();
+		$(".over").fadeIn();
 	}
 };
 
 var counter;
 
 var letters = [
-	["A", "N", "A", "G", "R", "A", "M"],
-	["R", "A", "I", "N", "B", "O", "W"],
-	["C", "I", "R", "C", "U", "S"],
-	["M", "A", "G", "I", "C"],
-	["W", "O", "R", "D"],
+	// ["A", "N", "A", "G", "R", "A", "M"],
+	// ["R", "A", "I", "N", "B", "O", "W"],
+	// ["C", "I", "R", "C", "U", "S"],
+	// ["M", "A", "G", "I", "C"],
+	// ["W", "O", "R", "D"],
 	["F", "L", "O", "W", "E", "R"],
 	["D", "R", "A", "M", "A"],
 	["F", "R", "I", "E", "N", "D"],
-	["D", "R", "A", "M", "A"],
 	["D", "O", "O", "R"]
 ];
 
 var playgame = function(e){
 
+	if (letters.length <= 0) {
+		$("#timer").empty();
+		$("h1").empty();
+		$("#blocks").empty();
+		$("#boxes").empty();
+		$(".block").empty();
+		$(".box").empty();
+		$(".win").show();
+		alert("WINNER!");
+  		}
+
+	$(".end").hide();
+	$(".over").hide();
+	$(".win").hide();
 	$('.counter').text(time);
 
 	counter = setInterval(tick, 2000);
 
 
 	var word = letters[Math.floor(Math.random() * letters.length)];
-
 
 	$(".block").each( function ( i ) {
     	$( this ).text( word[i] );
@@ -49,6 +70,9 @@ var playgame = function(e){
 	for (var i = 0; i < word.length; i++) {
 		var value = $('#blocks').append($('<div class="block" data-letter="'+word[i]+'"></div>').text(word[i]));
 	}
+
+	var index = letters.indexOf(word);
+	letters.splice(index, 1);
 
     $(".block").draggable( {
 		containment: 'document',
@@ -89,7 +113,5 @@ var playgame = function(e){
 		$("#blocks").empty();
 		playgame();
 	});
-
-
 
 $(document).ready(playgame);
