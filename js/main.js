@@ -9,10 +9,6 @@ var tick = function() {
 		$("h1").empty();
 		$("#blocks").empty();
 		$("#boxes").empty();
-		$(".block").empty();
-		$(".box").empty();
-		$(".block").off('.draggable');
-		$(".timer").html();
 		$(".play").hide();
 		$(".end").fadeIn();
 		$(".over").fadeIn();
@@ -25,8 +21,8 @@ var letters = [
 	// ["A", "N", "A", "G", "R", "A", "M"],
 	// ["R", "A", "I", "N", "B", "O", "W"],
 	// ["C", "I", "R", "C", "U", "S"],
-	// ["M", "A", "G", "I", "C"],
-	// ["W", "O", "R", "D"],
+	["M", "A", "G", "I", "C"],
+	["W", "O", "R", "D"],
 	["F", "L", "O", "W", "E", "R"],
 	["D", "R", "A", "M", "A"],
 	["F", "R", "I", "E", "N", "D"],
@@ -35,17 +31,6 @@ var letters = [
 
 var playgame = function(e){
 
-	if (letters.length <= 0) {
-		$("#timer").empty();
-		$("h1").empty();
-		$("#blocks").empty();
-		$("#boxes").empty();
-		$(".block").empty();
-		$(".box").empty();
-		$(".win").show();
-		alert("WINNER!");
-  		}
-
 	$(".end").hide();
 	$(".over").hide();
 	$(".win").hide();
@@ -53,6 +38,18 @@ var playgame = function(e){
 
 	counter = setInterval(tick, 2000);
 
+	if (letters.length <= 0) {
+		$("#timer").empty();
+		$("h1").empty();
+		$("#blocks").empty();
+		$("#boxes").empty();
+		$(".block").empty();
+		$(".box").empty();
+		$(".over").removeClass("over");
+		$(".end").removeClass("end");
+		$(".play").removeClass("play");
+		$(".win").show();
+	}	
 
 	var word = letters[Math.floor(Math.random() * letters.length)];
 
